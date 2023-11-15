@@ -1,0 +1,160 @@
+<html>
+<head>
+
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+
+<div class="container-fluid p-5 bg-primary text-white text-center" id="login-form">
+        <h1>Login</h1>
+        <form>
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+           <br>
+             <label for="login-password">Password:</label>
+         <input type="password" id="login-password" required>
+         <br>
+            <button type="submit">Login</button>
+        </form>
+        <p class="status" id="login-status"></p>
+       
+    </div>
+
+
+	<div class="container p-3 my-3 bg-dark text-white" id="registration-form">
+        <center>
+
+        <h1>Register</h1>
+
+       <form>
+            <label for="reg-username">Username:</label>
+            <input type="text" id="reg-username" required><br>
+            <label for="reg-password">Password:</label>
+            <input type="password" id="reg-password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p class="status" id="reg-status"></p>
+
+        
+        </center>
+    </div>
+	<div id="main-section" class="hidden">
+        <h1>Shopping Cart</h1>
+
+	<d
+    
+    
+    iv class="products">
+        <div class="product">
+            <h2>Apple</h2>
+            <p>Price: $10</p>
+            <img src="C:\Users\saiks\OneDrive\Desktop\sdc\apple.jpeg" height="100px">
+            <button class="add-to-cart"  onclick="addToCart('Apple', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>Banana</h2>
+            <p>Price: $10</p>
+            <img src="C:\Users\saiks\OneDrive\Desktop\sdc\banana.jpeg"height="100px">
+            <button class="add-to-cart" onclick="addToCart('Banana', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>Orange</h2>
+            <p>Price: $10</p>
+            <img src="C:\Users\saiks\OneDrive\Desktop\sdc\orange.jpeg" height="100px">
+            <button class="add-to-cart" onclick="addToCart('Orange', 10)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <h2>Mango</h2>
+            <p>Price: $10</p>
+            <img src="C:\Users\saiks\OneDrive\Desktop\sdc\mango.jpeg" height="100px">
+            <button class="add-to-cart" onclick=9"addToCart('Mango', 10)">Add to Cart</button>
+        </div>
+        <div class="product">
+            
+            <h2>Guava</h2>
+            <p>Price: $10</p>
+            <img src="C:\Users\saiks\OneDrive\Desktop\sdc\guava.jpeg" height="100px">
+            <button  class="add-to-cart" onclick="addToCart('Guava', 10)">Add to Cart</button></div>
+        </div>
+    	</div>
+
+        <div class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="checksout()">Checkout</button>
+        </div>
+    </div>
+
+<script> const users = [                                                                                   
+    { username: 'user1', password: 'pass1' },
+    { username: 'user2', password: 'pass2' },
+  ];
+
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+      document.getElementById('login-status').textContent = 'Login successful!';
+    } else {
+      document.getElementById('login-status').textContent = 'Invalid credentials!';
+    }
+  });
+
+  document.getElementById('registration-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const regUsername = document.getElementById('reg-username').value;
+    const regPassword = document.getElementById('reg-password').value;
+
+    if (regUsername === '' || regPassword === '') {
+      document.getElementById('reg-status').textContent = 'Please fill in both fields.';
+    } else {
+      users.push({ username: regUsername, password: regPassword });
+      document.getElementById('reg-status').textContent = 'Registration successful';
+    }
+  });let cartItems = [];
+
+    function addToCart(product, price) {
+        cartItems.push({product, price});
+        updateCart();
+    }
+    
+    function updateCart() {
+        let cartList = document.getElementById("cart-items");
+        let totalElement = document.getElementById("total");
+        let total = 0;
+    
+        cartList.innerHTML = "";
+        cartItems.forEach(item => {
+            let listItem = document.createElement("li");
+            listItem.innerText = ${item.product} - $${item.price};
+            cartList.appendChild(listItem);
+            total += item.price;
+        });
+    
+        totalElement.innerText = total;
+    }
+    
+    
+    
+    
+    // Add product and cart logic similar to the previous example
+    
+    function checksout() {
+        
+        alert('Thank you for your purchase!');
+        
+    }
+
+    
+    </script> 
+
+</body>
+</html>
